@@ -1,0 +1,8 @@
+.card-pokemon {
+  .img-pokemon-container {
+    .img-pokemon.img-pokemon--show {
+      filter: none;
+      transition: all 0.6s ease-in;
+    }
+  }
+}

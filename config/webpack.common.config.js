@@ -22,7 +22,7 @@ module.exports = {
       {
         test: /\.(css|s[ac]ss)$/,
         use: [
-          'style-loader',
+          MiniCssExtractPlugin.loader,
           {
             loader: 'css-loader',
             options: {
@@ -58,7 +58,7 @@ module.exports = {
       minify: true,
     }),
     new MiniCssExtractPlugin({
-      filename: './css/style.min.css',
+      filename: './css/styles.min.css',
     }),
     new CopyWebpackPlugin({
       patterns: [{ from: './src/assets/img', to: 'assets/img' }],
