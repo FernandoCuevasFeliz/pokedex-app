@@ -3,15 +3,19 @@ import Pokedex from './Pokedex';
 const $imgPokemon = document.getElementById('img-pokemon');
 const $cardPokemonFooter = document.getElementById('card-pokemon__footer');
 const $cardNamePokemon = document.getElementById('card-name-pokemon');
+const $cardPokemonResult = document.getElementById('pokemon-result');
+const $cardTitleResult = document.getElementById('title-result');
+const $btnNewGame = document.getElementById('card-pokemon__btn');
+
 const fragment = document.createDocumentFragment();
 
 const pokedex = new Pokedex();
+
 (async function () {
   await pokedex.getAllPokemons();
   await pokedex.setOptionsPokemons();
   pokedex.setOptionPokemon();
-  console.log(pokedex.optionsPokemon);
-  console.log(pokedex.optionPokemon);
+
   const pokemon = await pokedex.getDataPokemon(pokedex.optionPokemon.name);
 
   $imgPokemon.src = pokemon?.front_default;
@@ -34,13 +38,16 @@ const pokedex = new Pokedex();
   $cardPokemonFooter.addEventListener('click', (e) => {
     if (e.target.classList.contains('img-pokemon__opt')) {
       if (pokedex.optionPokemon.name === e.target.alt) {
-        $imgPokemon.classList.add('img-pokemon--show');
-        $cardNamePokemon.textContent = e.target.alt;
-        console.log('Correcto');
-        return;
+        $cardTitleResult.textContent = 'Correct!';
+      } else {
+        $cardTitleResult.textContent = 'Incorrect!';
       }
-      console.log('Incorrecto');
+      $imgPokemon.classList.add('img-pokemon--show');
+      $cardNamePokemon.textContent = e.target.alt;
+      $cardPokemonResult.classList.add('result--show');
       return;
     }
   });
 })();
+
+$btnNewGame.addEventListener('click', () => window.location.reload());

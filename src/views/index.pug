@@ -1,12 +1,14 @@
 extends ./templates/template
 block content
    .page-container
-      .card-pokemon
+      .card-pokemon#card-pokemon
          .img-pokemon-container
             img.img-pokemon#img-pokemon(src="", alt="")
          .card-pokemon__body
             h2.card-pokemon__title#card-name-pokemon What's Pokemon?
          .card-pokemon__footer#card-pokemon__footer
-         
+         .card-pokemon__result#pokemon-result
+            h2.title-result#title-result 
+            button.card-pokemon__btn#card-pokemon__btn New Game
             
          
