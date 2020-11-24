@@ -22,28 +22,24 @@ const pokedex = new Pokedex();
   $imgPokemon.alt = pokemon?.name;
 
   for (const pokeOpt of pokedex.optionsPokemon) {
-    const pokeOptItem = document.createElement('div');
+    const pokeOptItem = document.createElement('button');
     pokeOptItem.classList = 'card-pokemon__opt';
+    pokeOptItem.textContent = pokeOpt.name;
 
-    const pokeOptImg = document.createElement('img');
-    pokeOptImg.classList = 'img-pokemon__opt';
-    pokeOptImg.src = pokeOpt.front_default;
-    pokeOptImg.alt = pokeOpt.name;
-
-    pokeOptItem.append(pokeOptImg);
     fragment.append(pokeOptItem);
   }
+
   $cardPokemonFooter.append(fragment);
 
   $cardPokemonFooter.addEventListener('click', (e) => {
-    if (e.target.classList.contains('img-pokemon__opt')) {
-      if (pokedex.optionPokemon.name === e.target.alt) {
+    if (e.target.classList.contains('card-pokemon__opt')) {
+      if (pokedex.optionPokemon.name === e.target.textContent) {
         $cardTitleResult.textContent = 'Correct!';
       } else {
         $cardTitleResult.textContent = 'Incorrect!';
       }
       $imgPokemon.classList.add('img-pokemon--show');
-      $cardNamePokemon.textContent = e.target.alt;
+      $cardNamePokemon.textContent = pokedex.optionPokemon.name;
       $cardPokemonResult.classList.add('result--show');
       return;
     }

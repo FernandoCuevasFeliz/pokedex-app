@@ -12,11 +12,11 @@ class Pokedex {
     this.allPokemons = [...(await pokemons.json()).results];
   }
 
-  numberRandom(min = 1, max = this.limit) {
+  numberRandom(min = 0, max = this.limit) {
     return Math.floor(Math.random() * (max - min) + min);
   }
 
-  async setOptionsPokemons(limit = 3) {
+  async setOptionsPokemons(limit = 4) {
     let randomPokemons = [];
 
     while (randomPokemons.length < limit) {
@@ -24,17 +24,14 @@ class Pokedex {
       const condition = randomPokemons.indexOf(this.allPokemons[indexPokemon]);
 
       if (condition == -1) {
-        const dataPokemon = await this.getDataPokemon(
-          this.allPokemons[indexPokemon].name
-        );
-        randomPokemons.push(dataPokemon);
+        randomPokemons.push(this.allPokemons[indexPokemon]);
       }
     }
     this.optionsPokemon = randomPokemons;
   }
 
   setOptionPokemon() {
-    const index = this.numberRandom(0, 2);
+    const index = this.numberRandom(0, 4);
     this.optionPokemon = this.optionsPokemon[index];
   }
 

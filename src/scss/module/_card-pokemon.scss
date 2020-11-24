@@ -1,5 +1,5 @@
 .card-pokemon {
-  width: 90%;
+  width: 320px;
   min-height: 515px;
   text-align: center;
   margin-right: auto;
@@ -7,19 +7,29 @@
   border-radius: 8px;
   background-color: var(--light);
   position: relative;
+  transition: all 0.3s ease-in;
   &__title {
-    text-transform: capitalize;
+    font-size: 1.5rem;
+    &::first-letter {
+      text-transform: capitalize;
+    }
   }
-  .img-pokemon-container {
+  &_head {
+    width: 100%;
+  }
+  &__body {
     width: 100%;
     min-height: 324px;
+    border-radius: 8px;
   }
   .img-pokemon {
     filter: brightness(0);
     display: block;
+    pointer-events: none;
   }
   .card-pokemon__footer {
     width: 100%;
+    min-height: 166px;
     padding: 20px 15px;
     display: flex;
     flex-wrap: wrap;
@@ -28,15 +38,26 @@
   }
 
   &__opt {
-    width: calc((90% - 20px) / 3);
-    min-height: 81.531px;
-    display: inline-block;
+    width: calc((100% - 15px) / 2);
+    min-height: 33px;
     background-color: var(--primary);
-    border-radius: 8px;
+    border: none;
+    border-radius: 5px;
+    color: var(--light);
+    padding-top: 15px;
+    padding-bottom: 15px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    outline: none;
+    cursor: pointer;
+    &:hover {
+      background-color: var(--danger);
+    }
+    &:first-letter {
+      text-transform: capitalize;
+    }
   }
-  .img-pokemon__opt {
-    height: 100%;
-  }
+
   &__result {
     position: absolute;
     top: 0;
@@ -49,9 +70,11 @@
     align-items: center;
     background-color: rgba(0, 0, 0, 0.432);
     color: var(--light);
+    border-radius: 8px;
   }
   .title-result {
     font-size: 3em;
+    // margin-bottom: 10px;
   }
   &__btn {
     color: var(--light);
@@ -61,5 +84,8 @@
     border: none;
     border-radius: 8px;
     outline: none;
+    &:active {
+      background-color: var(--danger);
+    }
   }
 }

@@ -1,5 +1,5 @@
 .card-pokemon {
-  .img-pokemon-container {
+  &__body {
     .img-pokemon.img-pokemon--show {
       filter: none;
       transition: all 0.6s ease-in;

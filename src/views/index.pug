@@ -2,10 +2,10 @@ extends ./templates/template
 block content
    .page-container
       .card-pokemon#card-pokemon
-         .img-pokemon-container
-            img.img-pokemon#img-pokemon(src="", alt="")
+         .card-pokemon__head
+            h2.card-pokemon__title#card-name-pokemon What's the pokemon?
          .card-pokemon__body
-            h2.card-pokemon__title#card-name-pokemon What's Pokemon?
+            img.img-pokemon#img-pokemon(src="./assets/img/spiner.gif", alt="" )
          .card-pokemon__footer#card-pokemon__footer
          .card-pokemon__result#pokemon-result
             h2.title-result#title-result 
